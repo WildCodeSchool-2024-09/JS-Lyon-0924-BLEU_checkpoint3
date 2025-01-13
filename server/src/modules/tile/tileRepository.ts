@@ -26,7 +26,6 @@ class TileRepository {
       "select * from tile where coord_x = ? and coord_y = ?",
       [coord_x, coord_y],
     );
-
     return rows as Tile[];
   }
 
