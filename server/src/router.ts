@@ -12,11 +12,11 @@ router.get("/api/boats", boatActions.browse);
 
 import gameActions from "./modules/game/gameActions";
 
+import tileActions from "./modules/tile/tileActions";
+
+router.get("/api/tiles", tileActions.browse);
+
 router.post("/api/games", gameActions.add);
-
-import tilesActions from "./modules/tile/tileActions";
-
-router.get("/api/tiles", tilesActions.browse);
 
 /* ************************************************************************* */
 
