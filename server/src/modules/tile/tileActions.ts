@@ -1,6 +1,11 @@
 import type { RequestHandler } from "express";
 import tileRepository from "./tileRepository";
 
+type ValidationError = {
+  field: string;
+  message: string;
+};
+
 const browse: RequestHandler = async (req, res, next) => {
   try {
     const tiles = await tileRepository.readAll();
@@ -11,7 +16,15 @@ const browse: RequestHandler = async (req, res, next) => {
 };
 
 const validate: RequestHandler = async (req, res, next) => {
-  // your code here
+  const { coord_x, coord_y } = req.body;
+
+  const tiles = await tileRepository.readByCoordinates(coord_x, coord_y);
+
+  if (tiles.length === 0) {
+    res.sendStatus(422);
+  } else {
+    next();
+  }
 };
 
 export default {
