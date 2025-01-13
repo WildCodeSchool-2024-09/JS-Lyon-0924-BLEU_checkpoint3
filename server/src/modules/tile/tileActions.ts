@@ -15,7 +15,20 @@ const browse: RequestHandler = async (req, res, next) => {
 };
 
 const validate: RequestHandler = async (req, res, next) => {
-  // your code here
+  try {
+    const tile_coord_x = req.body.coord_x;
+    const tile_coord_y = req.body.coord_y;
+
+    tile_coord_x >= 0 &&
+    tile_coord_x <= 11 &&
+    tile_coord_y >= 0 &&
+    tile_coord_y <= 5
+      ? // put your validation rules here
+        next()
+      : res.sendStatus(422);
+  } catch (err) {
+    next(err);
+  }
 };
 
 export default {
