@@ -16,7 +16,21 @@ const browse: RequestHandler = async (req, res, next) => {
 };
 
 const edit: RequestHandler = async (req, res, next) => {
-  // your code here
+  const editBoat = {
+    id: Number.parseInt(req.params.id),
+    coord_x: Number.parseInt(req.body.coord_x),
+    coord_y: Number.parseInt(req.body.coord_y),
+  };
+  try {
+    const changeBoat = await boatRepository.update(editBoat);
+    if (changeBoat === 0) {
+      res.sendStatus(404);
+    } else {
+      res.sendStatus(204);
+    }
+  } catch (error) {
+    next(error);
+  }
 };
 
 export default {
