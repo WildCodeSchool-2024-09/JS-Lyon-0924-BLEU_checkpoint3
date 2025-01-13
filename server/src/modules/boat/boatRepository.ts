@@ -9,8 +9,21 @@ type Boat = {
   coord_y: number;
 };
 
+type Where = {
+  name?: string | null;
+};
+
 class BoatRepository {
-  async readAll(where = {}) {
+  async readAll(where: Where = { name: null }) {
+    if (where.name != null) {
+      const [rows] = await databaseClient.query<Rows>(
+        "select boat.id, boat.name, boat.coord_x, boat.coord_y,tile.type, tile.has_treasure from boat join tile on tile.coord_x=boat.coord_x and tile.coord_y=boat.coord_y where boat.name=?",
+        [where.name],
+      );
+
+      // Return the array of tiles
+      return rows as Boat[];
+    }
     // Execute the SQL SELECT query to retrieve all boats from the "boat" table
     const [rows] = await databaseClient.query<Rows>(
       "select boat.id, boat.name, boat.coord_x, boat.coord_y,tile.type, tile.has_treasure from boat join tile on tile.coord_x=boat.coord_x and tile.coord_y=boat.coord_y order by coord_y, coord_x",
