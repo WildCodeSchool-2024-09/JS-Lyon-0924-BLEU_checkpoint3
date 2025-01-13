@@ -14,6 +14,10 @@ import gameActions from "./modules/game/gameActions";
 
 router.post("/api/games", gameActions.add);
 
+import tilesActions from "./modules/tile/tileActions";
+
+router.get("/api/tiles", tilesActions.browse);
+
 /* ************************************************************************* */
 
 export default router;
