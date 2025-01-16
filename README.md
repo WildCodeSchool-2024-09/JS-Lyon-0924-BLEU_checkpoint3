@@ -82,7 +82,7 @@ La partie backend contient des tests pour chaque étape du checkpoint.
 Tu peux commencer par lancer la commande suivante :
 
 ```bash
-npm run test install
+
 ```
 
 Après avoir executé cette commande, le terminal devrait afficher :
@@ -95,14 +95,14 @@ FAIL  tests/install.test.ts
     ✕ You have filled /server/.env with valid information to connect to your database (18 ms)
     ✕ You have executed the db:migrate script (2 ms)
 ```
-    
-Les tests exécutés par la commande "npm run test" nous permettent de tester toutes sortes de choses (routes, requêtes ...). Ici il s'agit de tester l'installation et la configuration du checkpoint. Ce message qui s'affiche suite au premier test ressemblera aux autres étapes du checkpoint. 
+
+Les tests exécutés par la commande "npm run test" nous permettent de tester toutes sortes de choses (routes, requêtes ...). Ici il s'agit de tester l'installation et la configuration du checkpoint. Ce message qui s'affiche suite au premier test ressemblera aux autres étapes du checkpoint.
 
 Tu dois faire en sorte que chacune des étapes soit validée.
 
 Si tu ne l'as pas déjà fait, pour passer ce premier test, tu dois créer le fichier `.env` en copiant `.env.sample`.
 
-Si tu crées le `.env` comme demandé (en conservant `.env.sample`) et que tu relances le test, tu devrais voir : 
+Si tu crées le `.env` comme demandé (en conservant `.env.sample`) et que tu relances le test, tu devrais voir :
 
 ```
   Installation
@@ -111,7 +111,7 @@ Si tu crées le `.env` comme demandé (en conservant `.env.sample`) et que tu re
     ✕ You have filled /server/.env with valid information to connect to your database (31 ms)
     ✕ You have executed the db:migrate script (3 ms)
 ```
-    
+
 Tu peux remarquer que l'étape `You have created /server/.env` est maintenant cochée. Il ne te reste plus qu'à faire le reste 🚀 !
 
 **Attention :** Matelote, matelot ! Le README est tout aussi important que les messages des tests. C'est comme une carte qui t'aide à naviguer. Donc, n'oublie pas qu'il existe !
